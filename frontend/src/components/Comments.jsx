@@ -63,19 +63,19 @@ const StarRating = ({ rating }) => {
 
   for (let i = 0; i < fullStars; i++) {
     stars.push(
-      <Star key={`full-${i}`} className="w-4 h-4 text-amber-400 fill-amber-400" />
+      <Star key={`full-${i}`} className="w-3 h-3 text-amber-400 fill-amber-400" />
     );
   }
 
   if (hasHalfStar) {
     stars.push(
-      <StarHalf key="half" className="w-4 h-4 text-amber-400 fill-amber-400" />
+      <StarHalf key="half" className="w-3 h-3 text-amber-400 fill-amber-400" />
     );
   }
 
   while (stars.length < 5) {
     stars.push(
-      <Star key={`off-${stars.length}`} className="w-4 h-4 text-gray-300" />
+      <Star key={`off-${stars.length}`} className="w-3 h-3 text-gray-300" />
     );
   }
 
@@ -84,65 +84,65 @@ const StarRating = ({ rating }) => {
 
 export default function Comments() {
   return (
-    <section className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-white relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-br from-white via-blue-50/30 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-grid-blue-200/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center justify-center p-2 bg-blue-100 rounded-full">
-            <Quote className="w-6 h-6 text-blue-600" />
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center justify-center p-1.5 bg-blue-100 rounded-full">
+            <Quote className="w-4 h-4 text-blue-600" />
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#1e3a8a] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1e3a8a] tracking-tight">
             Investor Success Stories
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Join thousands of investors who have built wealth through our fractional real estate investment platform
           </p>
         </div>
 
         {/* Stats Section */}
-        <div className="flex flex-wrap justify-center gap-8 mt-8 mb-12">
+        <div className="flex flex-wrap justify-center gap-6 mt-6 mb-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#1e3a8a]">14.2%</div>
-            <div className="text-sm text-gray-600">Average Annual ROI</div>
+            <div className="text-2xl font-bold text-[#1e3a8a]">14.2%</div>
+            <div className="text-xs text-gray-600">Average Annual ROI</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#1e3a8a]">$150M+</div>
-            <div className="text-sm text-gray-600">Assets Under Management</div>
+            <div className="text-2xl font-bold text-[#1e3a8a]">$150M+</div>
+            <div className="text-xs text-gray-600">Assets Under Management</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#1e3a8a]">5000+</div>
-            <div className="text-sm text-gray-600">Active Investors</div>
+            <div className="text-2xl font-bold text-[#1e3a8a]">5000+</div>
+            <div className="text-xs text-gray-600">Active Investors</div>
           </div>
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="flex flex-col items-center justify-center mt-10">
+        <div className="flex flex-col items-center justify-center mt-8">
           <InfiniteMovingCards
             items={testimonialData.map((testimonial) => ({
               quote: (
-                <div className="space-y-4">
-                  <Quote className="w-8 h-8 text-blue-500/20" />
-                  <p className="text-base leading-relaxed text-gray-700">
+                <div className="space-y-3">
+                  <Quote className="w-6 h-6 text-blue-500/20" />
+                  <p className="text-sm leading-relaxed text-gray-700">
                     {testimonial.feedback}
                   </p>
-                  <div className="flex items-center gap-2 pt-2">
+                  <div className="flex items-center gap-1 pt-1">
                     <StarRating rating={testimonial.rating} />
-                    <span className="text-sm font-medium text-gray-600">
+                    <span className="text-xs font-medium text-gray-600">
                       {testimonial.rating.toFixed(1)}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950 flex items-center justify-center text-white font-semibold text-sm shadow-lg">
+                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950 flex items-center justify-center text-white font-semibold text-xs shadow-lg">
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-semibold text-gray-900 text-sm">
                         {testimonial.name}
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-xs text-gray-600">
                         {testimonial.role}
                       </div>
                     </div>

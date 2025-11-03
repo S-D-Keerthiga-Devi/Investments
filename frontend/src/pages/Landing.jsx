@@ -5,6 +5,7 @@ import React from 'react'
 import Steps from '../components/Steps'
 import Comments from '../components/Comments'
 import Hero from '../components/Hero'
+import Features from '../components/Features'
 
 export default function Landing() {
   return (
@@ -12,6 +13,7 @@ export default function Landing() {
         <Hero/>
         <Decision/>
         <About/>
+        <Features/>
         <Cards/>
         <Steps/>
         <Comments/>
