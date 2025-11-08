@@ -63,7 +63,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
@@ -82,4 +82,8 @@
     linear infinite var(--animation-direction, forwards);
     animation-timing-function: linear;
   will-change: transform;
+}
+
+html {
+  scroll-behavior: smooth;
 }
