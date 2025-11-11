@@ -1,37 +1,43 @@
 import React from 'react';
-import { Search, FileCheck, LineChart, TrendingUp } from 'lucide-react';
+import { Rocket, UserCheck, LineChart, HandCoins } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Steps() {
+export default function StepsVentureInvestment() {
+  const navigate = useNavigate();
+
   const steps = [
     {
-      title: "Choose Investment",
-      icon: <Search className="w-5 h-5" />,
-      text: "Browse opportunities"
+      title: "Discover Promising Startups",
+      icon: <Rocket className="w-5 h-5" />,
+      text: "Explore vetted, high-potential startups across emerging sectors.",
     },
     {
-      title: "Complete KYC",
-      icon: <FileCheck className="w-5 h-5" />,
-      text: "Quick verification"
+      title: "Verify & Review Details",
+      icon: <UserCheck className="w-5 h-5" />,
+      text: "Analyze startup profiles, financials, and business models.",
     },
     {
-      title: "Track Portfolio",
+      title: "Invest & Own Equity",
       icon: <LineChart className="w-5 h-5" />,
-      text: "Monitor investments"
+      text: "Invest with ease and gain fractional equity ownership.",
     },
     {
-      title: "Earn Returns",
-      icon: <TrendingUp className="w-5 h-5" />,
-      text: "Passive income"
-    }
+      title: "Track Growth & Returns",
+      icon: <HandCoins className="w-5 h-5" />,
+      text: "Monitor performance, receive updates, and enjoy potential exits.",
+    },
   ];
 
   return (
     <div className="bg-white py-6 px-4">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-xl font-bold text-[#1e3a8a] mb-6 text-center">
-          Getting Started is Simple
+        <h2 className="text-3xl font-bold text-blue-900 mb-2 text-center">
+          Investing in Startups Made Simple
         </h2>
-        
+        <p className="text-gray-600 text-sm text-center mb-6 max-w-2xl mx-auto">
+          Join the next wave of innovation. Discover, evaluate, and invest in visionary startups with fractional venture investment opportunities.
+        </p>
+
         <div className="relative">
           {/* Desktop Layout */}
           <div className="hidden md:flex items-start justify-center">
@@ -46,11 +52,9 @@ export default function Steps() {
                   <h3 className="font-bold text-gray-900 mb-1 text-sm text-center">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 text-xs text-center">
-                    {step.text}
-                  </p>
+                  <p className="text-gray-600 text-xs text-center">{step.text}</p>
                 </div>
-                
+
                 {index < steps.length - 1 && (
                   <div className="flex items-center" style={{ width: '120px', marginTop: '24px' }}>
                     <div className="flex-1 h-0.5 bg-[#1e3a8a]"></div>
@@ -72,22 +76,16 @@ export default function Steps() {
                         {step.icon}
                       </div>
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-1 text-sm">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 text-xs">
-                      {step.text}
-                    </p>
+                    <h3 className="font-bold text-gray-900 mb-1 text-sm">{step.title}</h3>
+                    <p className="text-gray-600 text-xs">{step.text}</p>
                   </div>
 
-                  {/* Horizontal arrow to the right (for steps 0 and 2) */}
+                  {/* Arrows for mobile */}
                   {index % 2 === 0 && index < steps.length - 1 && (
                     <div className="absolute top-5 left-full w-8 h-0.5 bg-[#1e3a8a] z-0">
                       <div className="absolute right-0 top-1/2 w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[8px] border-l-[#1e3a8a] transform -translate-y-1/2"></div>
                     </div>
                   )}
-
-                  {/* Vertical arrow down (only for step 1) */}
                   {index === 1 && (
                     <div className="absolute top-full left-1/2 w-0.5 h-8 bg-[#1e3a8a] transform -translate-x-1/2 z-0">
                       <div className="absolute bottom-0 left-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[8px] border-t-[#1e3a8a] transform -translate-x-1/2"></div>
@@ -100,8 +98,11 @@ export default function Steps() {
         </div>
 
         <div className="mt-6 text-center">
-          <button className="bg-[#1e3a8a] text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-[#1e40af] transition-colors">
-            Start Investing
+          <button
+            onClick={() => navigate('#properties')}
+            className="bg-[#1e3a8a] text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-[#1e40af] transition-colors"
+          >
+            Explore Venture Investments
           </button>
         </div>
       </div>

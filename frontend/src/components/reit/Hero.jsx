@@ -1,9 +1,73 @@
-import React from 'react';
-import { ArrowRight, Building2, LineChart, FileCheck, Wallet } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Building2, LineChart, FileCheck, Wallet, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 
 const ReitHero = () => {
-  const navigate = useNavigate();
+  const slides = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500&h=300&fit=crop",
+      title: "Urban Growth REIT",
+      location: "Mumbai, Delhi, Bengaluru",
+      type: "Office REIT",
+      yield: "9.8%",
+      minInvestment: "₹10,000",
+      propertyType: "Grade-A Offices",
+      rating: 5,
+      badge: "bg-blue-900",
+      ownership: "Public REIT - Commercial",
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+      title: "Tech Park REIT",
+      location: "Hyderabad, Pune, Bengaluru",
+      type: "Tech Hub REIT",
+      yield: "9.5%",
+      minInvestment: "₹10,000",
+      propertyType: "IT Parks",
+      rating: 5,
+      badge: "bg-purple-700",
+      ownership: "Public REIT - Technology",
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=500&h=300&fit=crop",
+      title: "Corporate Hub REIT",
+      location: "Gurugram, Noida, Mumbai",
+      type: "Commercial REIT",
+      yield: "9.2%",
+      minInvestment: "₹10,000",
+      propertyType: "Business Centers",
+      rating: 5,
+      badge: "bg-green-700",
+      ownership: "Public REIT - Mixed Use",
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const handleExplore = () => {
+    const propertiesSection = document.querySelector("#properties");
+    if (propertiesSection) {
+      propertiesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleLearnMore = () => {
+    const stepsSection = document.querySelector("#steps");
+    if (stepsSection) {
+      stepsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative min-h-[60vh] bg-gradient-to-br from-white via-blue-50/30 to-white overflow-hidden">
       {/* Decorative Background */}
@@ -39,14 +103,14 @@ const ReitHero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
-                onClick={() => navigate('#properties')}
+                onClick={handleExplore}
                 className="group inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-blue-900 rounded-lg hover:bg-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Explore REITs
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
-                onClick={() => navigate('#steps')}
+                onClick={handleLearnMore}
                 className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-blue-900 bg-white border-2 border-blue-900 rounded-lg hover:bg-blue-50 transition-all duration-300"
               >
                 Learn How It Works
@@ -96,50 +160,126 @@ const ReitHero = () => {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative lg:h-[400px] flex items-center justify-center">
-            <div className="relative w-full max-w-xl">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.01] transition-all duration-500">
-                <img
-                  src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&h=800&fit=crop"
-                  alt="Commercial Real Estate"
-                  className="w-full h-[300px] lg:h-[350px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent"></div>
+          {/* Right Carousel Section */}
+          <div className="relative flex items-center justify-center py-8">
+            <div className="relative w-full max-w-md mx-auto">
+              <div className="relative h-[480px]">
+                {slides.map((slide, index) => (
+                  <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-opacity duration-700 ${
+                      index === current ? "opacity-100 z-10" : "opacity-0 z-0"
+                    }`}
+                  >
+                    <div className="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                      {/* Image Section */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img
+                          src={slide.image}
+                          alt={slide.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
 
-                {/* Floating Card */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-lg">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs text-gray-600 mb-1">Featured REIT</p>
-                      <h3 className="text-lg font-bold text-gray-900">Urban Growth REIT</h3>
-                      <p className="text-xs text-gray-500 mt-1">Grade-A Office Spaces</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs text-gray-600 mb-1">Expected Yield</p>
-                      <p className="text-2xl font-bold text-blue-900">9.8%</p>
+                        {/* Type Badge */}
+                        <div className="absolute top-2 left-2">
+                          <span className={`${slide.badge} px-2 py-1 text-xs font-bold tracking-wide text-white uppercase rounded-full shadow`}>
+                            {slide.type}
+                          </span>
+                        </div>
+
+                        {/* ROI Badge */}
+                        <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full shadow">
+                          <p className="text-xs font-bold text-blue-900">{slide.yield} Yield</p>
+                        </div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div className="p-4">
+                        <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors">
+                          {slide.title}
+                        </h3>
+
+                        {/* Location */}
+                        <div className="flex items-center text-gray-500 mb-3">
+                          <MapPin className="w-4 h-4 mr-1 flex-shrink-0" />
+                          <span className="text-sm">{slide.location}</span>
+                        </div>
+
+                        {/* Rating */}
+                        <div className="flex items-center mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className={`w-4 h-4 ${i < slide.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                          ))}
+                          <span className="text-sm text-gray-600 ml-1">({slide.rating}.0)</span>
+                        </div>
+
+                        {/* Investment Details */}
+                        <div className="grid grid-cols-2 gap-3 mb-3 p-3 bg-gray-50 rounded">
+                          <div>
+                            <p className="text-xs text-gray-500 mb-1">Min Investment</p>
+                            <p className="text-sm font-bold text-gray-900">{slide.minInvestment}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-gray-500 mb-1">Property Type</p>
+                            <p className="text-sm font-bold text-gray-900">{slide.propertyType}</p>
+                          </div>
+                        </div>
+
+                        {/* Ownership Type */}
+                        <div className="text-center text-xs text-blue-900 font-semibold mb-3">
+                          {slide.ownership}
+                        </div>
+
+                        {/* CTA Button */}
+                        <button
+                          onClick={handleExplore}
+                          className="w-full py-2 bg-blue-900 text-white text-sm font-semibold rounded hover:bg-blue-800 transition-colors duration-300 flex items-center justify-center group"
+                        >
+                          View Details
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      </div>
                     </div>
                   </div>
+                ))}
+              </div>
 
-                  <div className="mt-3 pt-3 border-t border-gray-200 flex justify-between items-center">
-                    <div className="flex items-center space-x-3">
-                      <div>
-                        <p className="text-xs text-gray-500">Min Investment</p>
-                        <p className="text-sm font-semibold text-gray-900">₹10,000</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500">Type</p>
-                        <p className="text-sm font-semibold text-gray-900">Public REIT</p>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => navigate('#reit-listings')}
-                      className="px-3 py-1 bg-blue-900 text-white text-xs font-semibold rounded-md hover:bg-blue-800 transition-colors"
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </div>
+              {/* Carousel Controls */}
+              <button
+                onClick={() => setCurrent(current === 0 ? slides.length - 1 : current - 1)}
+                className="absolute top-1/2 -left-12 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-blue-900 p-2 rounded-full shadow-md hover:shadow-lg transition-all z-20"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setCurrent(current === slides.length - 1 ? 0 : current + 1)}
+                className="absolute top-1/2 -right-12 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-blue-900 p-2 rounded-full shadow-md hover:shadow-lg transition-all z-20"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Carousel Indicators */}
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrent(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      index === current ? 'bg-blue-900 w-6' : 'bg-gray-300 w-2'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
