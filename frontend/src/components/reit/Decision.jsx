@@ -21,11 +21,11 @@ const Decisions = () => {
           {/* Buy */}
           <div
             onClick={() => navigate('#properties')}
-            className="bg-gray-50 rounded-lg p-4 text-center border border-gray-100 hover:border-[#1e3a8a] hover:shadow-md transition-all duration-300 w-40 h-40 flex flex-col items-center justify-center cursor-pointer"
+            className="bg-gray-50 rounded-lg p-3 text-center border border-gray-100 hover:border-[#1e3a8a] hover:shadow-md transition-all duration-300 w-32 h-32 flex flex-col items-center justify-center cursor-pointer"
           >
-            <div className="w-8 h-8 bg-[#1e3a8a] rounded-md flex items-center justify-center mb-2">
+            <div className="w-6 h-6 bg-[#1e3a8a] rounded-md flex items-center justify-center mb-2">
               <svg
-                className="w-4 h-4 text-white"
+                className="w-3 h-3 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -38,22 +38,19 @@ const Decisions = () => {
                 />
               </svg>
             </div>
-            <h3 className="font-semibold text-s text-[#1e3a8a] mb-1">
+            <h3 className="font-semibold text-xs text-[#1e3a8a] mb-1">
               Buy REIT Units
             </h3>
-            <p className="text-gray-600 text-[11px]">
-            Invest in top REITs starting at just ₹10,000
-            </p>
           </div>
 
           {/* Sell */}
           <div
             onClick={() => navigate('#sell-reit')}
-            className="bg-gray-50 rounded-lg p-4 text-center border border-gray-100 hover:border-[#1e3a8a] hover:shadow-md transition-all duration-300 w-40 h-40 flex flex-col items-center justify-center cursor-pointer"
+            className="bg-gray-50 rounded-lg p-3 text-center border border-gray-100 hover:border-[#1e3a8a] hover:shadow-md transition-all duration-300 w-32 h-32 flex flex-col items-center justify-center cursor-pointer"
           >
-            <div className="w-8 h-8 bg-[#1e3a8a] rounded-md flex items-center justify-center mb-2">
+            <div className="w-6 h-6 bg-[#1e3a8a] rounded-md flex items-center justify-center mb-2">
               <svg
-                className="w-4 h-4 text-white"
+                className="w-3 h-3 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -66,12 +63,9 @@ const Decisions = () => {
                 />
               </svg>
             </div>
-            <h3 className="font-semibold text-s text-[#1e3a8a] mb-1">
+            <h3 className="font-semibold text-xs text-[#1e3a8a] mb-1">
               Sell REIT Units
             </h3>
-            <p className="text-gray-600 text-[11px]">
-            Exit anytime and liquidate securely
-            </p>
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@ const Decisions = () => {
             <h3 className="font-semibold text-xs text-[#1e3a8a] mb-1">
               Sell Property
             </h3>
-            <p className="text-gray-600 text-[10px]">Reach serious buyers</p>
+
           </div>
         </div>
       </div>

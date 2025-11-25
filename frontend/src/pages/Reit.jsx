@@ -34,10 +34,9 @@ export default function Reit() {
     <div>
         <div id="hero"><Hero/></div>
         <div id="decision"><Decision/></div>
-        <div id="about"><About/></div>
-        <div id="features"><Features/></div>
         <div id="properties"><Cards/></div>
         <div id="steps"><Steps/></div>
+        <div id="features"><Features/></div>
         <div id="comments"><Comments/></div>
     </div>
   )
